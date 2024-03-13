@@ -1,0 +1,76 @@
+[alias]
+    files=diff-tree --no-commit-id --name-only -r
+    files-range=log --name-only --pretty=oneline --full-index
+    header=show --pretty=fuller --show-signature --no-patch
+    ignore = "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi"
+    lg1=log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %G? - %C(bold green)(%ah)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+    lg2=log --graph --abbrev-commit --decorate  --format=format:'%C(bold blue)%h%C(reset) %G? - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    lg=!"git lg1 -n 15"
+    long=!"git lg1"
+    la=!"git lg1 --all"
+    la2=!"git lg2 --all"
+    long-hidden=!"git long --reflog"
+    open=!$DOTFILES_PATH/scripts/git/git-open
+    st = status --short
+
+[commit]
+    gpgsign=true
+    template = /Users/analallena/.gitmessage
+
+[core]
+    editor=emacs -nw
+
+[delta]
+    features = decorations
+    side-by-side = true
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = omit
+
+[diff]
+    colorMoved = default
+
+[fetch]
+    prune = true
+
+[init]
+	defaultBranch = main
+
+[interactive]
+    diffFilter = delta --color-only
+
+[pager]
+    diff = delta
+    show = delta
+    log = delta
+    blame = delta
+    grep = delta
+    reflog = delta
+
+[pull]
+    rebase = true
+
+[push]
+	autosetupremote = true
+    gpgSign = if-asked
+
+[rebase]
+    autoStash = true
+
+; Project includes
+[includeIf "gitdir:~/ws/personal/"]
+    path=~/ws/personal/personal.gitconfig
+
+[includeIf "gitdir:~/ws/tw/"]
+    path=~/ws/tw/tw.gitconfig
+
+[includeIf "gitdir:~/ws/iberia/"]
+    path = ~/ws/iberia/iberia.gitconfig
