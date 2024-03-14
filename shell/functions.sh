@@ -34,14 +34,13 @@ function awp() {
 function commitandpush() {
   echo "Message $1"
     message=$1
+    branch=${message%)*}
     branch=${message//(//}
-    branch=${branch//[[:space:]]/_}
-    branch=${branch//)/}
-    branch=${branch//:/}
 
     echo "Branch $branch"
     git checkout -b $branch
     git commit -m "$1"
     git push -u origin HEAD
     git checkout main
+    git branch -d $branch
 }

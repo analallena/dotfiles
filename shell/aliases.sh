@@ -24,6 +24,5 @@ alias ws="cd ~/ws"
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash;"
 
 #git
-alias g="git"
 alias gp="git pull"
 alias gc="git checkout"
