@@ -1,3 +1,5 @@
 tap "remotemobprogramming/brew"
 
 brew "mob"
+brew "hub"
+brew "gh"

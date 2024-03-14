@@ -2,13 +2,13 @@
 # Shortcuts
 
 alias reload="source ~/.bash_profile"
-alias g="git"
 alias ll="ls -la"
 
 # Navigation
 
 alias ..="cd .."
 alias ...="cd ../.."
+alias ....="cd ../../.."
 #alias -= "cd -"
 
 # Shortcuts
@@ -23,4 +23,7 @@ alias ws="cd ~/ws"
 # Finally, clear download history from quarantine. https://mths.be/bum
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash;"
 
-
+#git
+alias g="git"
+alias gp="git pull"
+alias gc="git checkout"
