@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+source "$DOTFILES_PATH/scripts/core/_main.sh"
+
+##?
+##? Get AWS logs
+##?
+#?? 1.0.0
+##?
+##? Usage:
+##?   logs get [--log-group=<log_group>][--log-stream=<log-stream>][--output=<output>]
+##?   logs delete --log-group=<log-group>
+##?
+##? Options:
+##?   -g, --log-group=<log-group>    CloudWatch log group
+##?   -s, --log-stream=<log-stream>  CloudWatch los stream
+##?   -o, --output=<output>          Output format (json or text) [default:json]
+##?
+docs::eval "$@"
+
+if [ "${get}" == "true" ]; then
+  [[ "${log_group}" == "" ]] && log_group=$(aws logs describe-log-groups | jq -r '.logGroups[].logGroupName' | gum choose --header "Log group...")
+  [[ "${log_stream}" == "" ]] && log_stream=$(aws logs describe-log-streams --log-group-name ${log_group} --order-by LastEventTime --descending | jq -r '.logStreams[].logStreamName' | gum choose --height 15 --header "Log stream...")
+
+  logs=$(aws logs get-log-events --log-group-name ${log_group} --log-stream-name ${log_stream} | jq -r '[.events[] | .timestamp |= (tonumber / 1000 | todateiso8601) | .ingestionTime |= (tonumber / 1000 | todateiso8601) | .message |= gsub("\n"; "")]')
+
+  if [[ "${output}" == "text" ]]; then
+    jq -r '.[] | {"timestamp": .timestamp, "message": .message} | join(" ")' <<<${logs}
+  else
+    jq . <<<${logs}
+  fi
+fi
+
+if [ "${delete}" == "true" ]; then
+  aws logs delete-log-group --log-group-name ${log_group}
+fi

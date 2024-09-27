@@ -32,15 +32,49 @@ function awp() {
 }
 
 function commitandpush() {
+  git pull
   echo "Message $1"
-    message=$1
-    branch=${message%)*}
-    branch=${branch//(//}
+  message=$1
+  branch=${message%)*}
+  branch=${branch//(//}
 
-    echo "Branch $branch"
-    git checkout -b $branch
+  echo "Branch $branch"
+  git checkout -b $branch
+
+  if [ $# -eq 2 ]; then
+    git commit -m "$1" -m "$2"
+  else
     git commit -m "$1"
-    git push -u origin HEAD
-    git checkout main
-    git branch -d $branch
+  fi
+
+  git push -u origin HEAD
+  git checkout main
+  git branch -d $branch
+}
+
+pullmain()
+{
+  cd $1
+  git stash
+  git checkout main
+  git pull
+  cd ..
+}
+
+function pullall()
+{
+  folders=*/
+
+  for folder in $folders
+  do
+  	if [ -f $folder/.git/config ]; then
+  	  echo "Updating $folder"
+  		pullmain $folder
+  	fi
+  done
+}
+
+function deletebranches()
+{
+   git branch
 }

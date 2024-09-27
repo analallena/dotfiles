@@ -1,5 +1,5 @@
-tap "remotemobprogramming/brew"
-
-brew "mob"
 brew "hub"
 brew "gh"
+cask "alt-tab"
+cask "rectangle"
+cask "iterm2"
