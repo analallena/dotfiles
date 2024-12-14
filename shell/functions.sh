@@ -15,16 +15,23 @@ function awp() {
 
   default_option=""
   test -n "${AWS_PROFILE}" && default_option="--selected ${AWS_PROFILE}"
-  selected_profile=$(echo ${profiles[@]} | tr ' ' '\n' | gum choose ${default_option})
+  selected_profile=$(echo ${profiles[@]} | tr ' ' '\n' | gum choose --ordered --select-if-one --height 15 ${default_option} --header "AWS profiles (${#profiles[@]})")
 
   [[ -z "${selected_profile}" ]] && return 1 || export AWS_PROFILE=${selected_profile}
 
   if [ ${?} -eq 0 ]; then
-    aws sts get-caller-identity --query "Account" >& /dev/null
-    if [ ${?} -eq 0 ];  then
+    # Check if we already loged in
+    aws_account_id=$(aws sts get-caller-identity --query "Account" --output text 2> /dev/null)
+    if [ ${?} -ne 0 ];  then
+      aws sso login
+      if [ ${?} -ne 0 ];  then
+        exit ${?}
+      fi
+      aws_account_id=$(aws sts get-caller-identity --query "Account" --output text 2> /dev/null)
+    fi
+    echo "\"${AWS_PROFILE}\",\"${aws_account_id}\"" | gum table --print --columns "Profile,Account"
+    if [[ "${1}" == "-d" ]]; then
       aws configure list
-    else
-      aws sso login && aws configure list
     fi
   else
     exit ${?}
