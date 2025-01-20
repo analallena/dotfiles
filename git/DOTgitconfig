@@ -72,5 +72,5 @@
 [includeIf "gitdir:~/ws/tw/"]
     path=~/ws/tw/tw.gitconfig
 
-[includeIf "gitdir:~/ws/iberia/"]
-    path = ~/ws/iberia/iberia.gitconfig
+[includeIf "gitdir:~/ws/work/"]
+    path = ~/ws/work/work.gitconfig
