@@ -59,6 +59,19 @@ function commitandpush() {
   git branch -d $branch
 }
 
+function createterraformmodule() {
+  mkdir -p $1
+  cd $1
+  touch README.md
+  touch main.tf
+  touch variables.tf
+  touch outputs.tf
+  cd ..
+  git add .
+  git commit -m "Add $1 terraform module scheleton"
+  git push
+}
+
 pullmain()
 {
   cd $1
