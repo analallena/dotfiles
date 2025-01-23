@@ -60,13 +60,13 @@ function commitandpush() {
 }
 
 function createterraformmodule() {
-  mkdir -p $1
-  cd $1
+  mkdir -p modules/$1
+  cd modules/$1
   touch README.md
   touch main.tf
   touch variables.tf
   touch outputs.tf
-  cd ..
+  cd ../..
   git add .
   git commit -m "Add $1 terraform module scheleton"
   git push
@@ -97,4 +97,12 @@ function pullall()
 function deletebranches()
 {
    git branch
+}
+
+function createSSHKey() {
+  ssh-keygen -t rsa -b 2048 -f "$1"
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/id_rsa
+  pbcopy < ~/.ssh/id_rsa.pub
+  echo "Public key copied to clipboard"
 }
