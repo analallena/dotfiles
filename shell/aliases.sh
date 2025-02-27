@@ -28,7 +28,4 @@ alias g="git"
 alias gp="git pull"
 alias gc="git checkout"
 
-alias bs-app="cd ~/ws/iberia/software-engineering--platform--backstage-application"
-alias bs-data="cd ~/ws/iberia/software-engineering--platform--backstage-data"
-alias bs-data-int="cd ~/ws/iberia/software-engineering--platform--backstage-data-int"
-alias bs-tk="cd ~/ws/iberia/software-engineering--platform--technical-knowledge"
+source "${HOME}/ws/work/aliases.sh"

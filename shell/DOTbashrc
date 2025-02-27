@@ -10,3 +10,9 @@ export DOTFILES_PATHS=$DOTFILES_PATH
 
 source "${DOTFILES_PATH}/shell/init.sh"
 
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/analallena/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

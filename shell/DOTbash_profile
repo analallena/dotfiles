@@ -30,3 +30,7 @@ export PS1="\[\e[91m\]\$?\[\e[00m\][\t]\[\e[32m\]\w \[\e[91m\]\$(parse_git_branc
 
 
 complete -C /usr/local/bin/terraform terraform
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/analallena/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
