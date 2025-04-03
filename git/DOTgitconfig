@@ -70,7 +70,7 @@
     path=~/ws/personal/personal.gitconfig
 
 [includeIf "gitdir:~/ws/tw/"]
-    path=~/ws/tw/tw.gitconfig
+    path=~/ws/tw/personal.gitconfig
 
 [includeIf "gitdir:~/ws/work/"]
     path = ~/ws/work/work.gitconfig
