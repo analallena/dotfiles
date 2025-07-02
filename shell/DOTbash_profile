@@ -34,3 +34,5 @@ complete -C /usr/local/bin/terraform terraform
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/analallena/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+[ -s "/Users/analallena/.scm_breeze/scm_breeze.sh" ] && source "/Users/analallena/.scm_breeze/scm_breeze.sh"

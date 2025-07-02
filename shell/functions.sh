@@ -55,8 +55,8 @@ function commitandpush() {
   fi
 
   git push -u origin HEAD
-  git checkout main
-  git branch -d $branch
+
+  gh pr create --title "My New Feature" --body "This PR introduces a new feature that does X." --label "enhancement" --base main
 }
 
 function createterraformmodule() {
