@@ -7,7 +7,7 @@ export NVM_DIR="$HOME/.nvm"
 echo "Hola Caracola - bashrc"
 export DOTFILES_PATH=$HOME/ws/personal/dotfiles
 export DOTFILES_PATHS=$DOTFILES_PATH
-
+export LANG="es_ES.UTF-8"
 source "${DOTFILES_PATH}/shell/init.sh"
 
 eval "$(pyenv init --path)"

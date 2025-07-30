@@ -29,3 +29,5 @@ alias gp="git pull"
 alias gc="git checkout"
 
 source "${HOME}/ws/work/aliases.sh"
+
+alias main="git stash & git checkout main & git pull"
