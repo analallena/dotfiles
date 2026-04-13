@@ -22,6 +22,9 @@ source "${DOTFILES_PATH}/shell/init.sh"
 #  BREW_BIN="/opt/homebrew/bin/brew"
 #fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
@@ -36,3 +39,7 @@ export PATH="/Users/analallena/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 [ -s "/Users/analallena/.scm_breeze/scm_breeze.sh" ] && source "/Users/analallena/.scm_breeze/scm_breeze.sh"
+export PATH="$(brew --prefix)/bin:$PATH"
+export GPG_TTY=$(tty)
+
+

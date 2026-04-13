@@ -1,8 +1,11 @@
-echo "BASHRC"
-[ -n "$PS1" ] && source ~/.bash_profile;
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# OPENSPEC:START
+# OpenSpec shell completions configuration
+if [ -d "/Users/analallena/.local/share/bash-completion/completions" ]; then
+  for f in "/Users/analallena/.local/share/bash-completion/completions"/*; do
+    [ -f "$f" ] && . "$f"
+  done
+fi
+# OPENSPEC:END
 
 echo "Hola Caracola - bashrc"
 export DOTFILES_PATH=$HOME/ws/personal/dotfiles
@@ -10,6 +13,8 @@ export DOTFILES_PATHS=$DOTFILES_PATH
 export LANG="es_ES.UTF-8"
 source "${DOTFILES_PATH}/shell/init.sh"
 
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
@@ -17,4 +22,16 @@ eval "$(pyenv init -)"
 export PATH="/Users/analallena/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
+export GPG_TTY=$(tty)
+
 [ -s "/Users/analallena/.scm_breeze/scm_breeze.sh" ] && source "/Users/analallena/.scm_breeze/scm_breeze.sh"
+
+echo "BASHRC"
+[ -n "$PS1" ] && source ~/.bash_profile;
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+export PATH="$HOME/.local/bin:$PATH"
+
+export GPG_TTY=$(tty)

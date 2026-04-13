@@ -14,7 +14,7 @@
     st = status --short
 
 [commit]
-    gpgsign=true
+	gpgsign = true
     template = /Users/analallena/.gitmessage
 
 [core]
@@ -79,3 +79,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[gpg]
+	program = gpg

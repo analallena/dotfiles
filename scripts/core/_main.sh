@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+
+
 if ! ${DOT_MAIN_SOURCED:-false}; then
   source "$DOTFILES_PATH/scripts/core/args.sh"
   source "$DOTFILES_PATH/scripts/core/collections.sh"
@@ -11,6 +13,7 @@ if ! ${DOT_MAIN_SOURCED:-false}; then
   source "$DOTFILES_PATH/scripts/core/str.sh"
   source "$DOTFILES_PATH/scripts/core/table.sh"
   source "$DOTFILES_PATH/scripts/core/types.sh"
+  source "$DOTFILES_PATH/scripts/rename_files.sh"
 
   readonly DOT_MAIN_SOURCED=true
 fi
